@@ -120,7 +120,7 @@ struct Vector3
 	float X;
 	float Y;
 	float Z;
-	float W;
+	//float W;
 
 };
 
@@ -1423,7 +1423,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 
 	//Textureを読み込んで転送する
-	DirectX::ScratchImage mipImages = LoadTexture("resource/uvChecker.png");
+	DirectX::ScratchImage mipImages = LoadTexture("resource/monsterBall.png");
 	const DirectX::TexMetadata& metadata = mipImages.GetMetadata();
 	ID3D12Resource* textureResource = CreateTextureResource(device, metadata);
 	UploadTextureDate(textureResource, mipImages);
