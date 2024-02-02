@@ -1416,6 +1416,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 
 	//Transform オブジェクトの姿勢情報位置にかんするもの
+
 	Transform transform{ {1.0f,1.0f,1.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,0.0f} };
 
 	Transform cameratransform{ {1.0f,1.0f,1.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,-5.0f} };
@@ -1463,7 +1464,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	directionalLightData->color = { 1.0f,1.0f,1.0f,1.0f };
 	//directionalLightData->color = { 1.0f,1.0f,1.0f,1.0f };
 	directionalLightData->direction = { 0.0f,-1.0f,0.0f };
-	directionalLightData->intensity = 10.0f;
+	directionalLightData->intensity = 20.0f;
 
 
 	//カメラ用のリソース
@@ -1471,10 +1472,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	//照りやるデータに書き込む
 	CameraForGPU* cameraData = nullptr;
 
+
+
 	//書き込むためのアドレスを取得
 	cameraResource->Map(0, nullptr, reinterpret_cast<void**>(&cameraData));
 	cameraData->worldPosition = cameratransform.translate;
-;
 
 	
 
@@ -1537,7 +1539,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			ImGui::SliderFloat4("Color", Color, 0.0f, 1.0f);
 
 			ImGui::DragFloat3("LightColor", &directionalLightData->color.x, 0.1f,1.0f);
-			ImGui::DragFloat3("LightDirection", &directionalLightData->direction.X,0.005f);
+			ImGui::DragFloat3("LightDirection", &directionalLightData->direction.X,0.0005f);
 			ImGui::DragFloat3("Lightinstensity", &directionalLightData->intensity, 0.1f);
 
 			ImGui::End();
@@ -1578,7 +1580,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			//TransitionBarrierを張る
 			commandList->ResourceBarrier(1, &barrier);
 
-		
+		    
 
 			//描画先のPTVを設定する
 			commandList->OMSetRenderTargets(1, &rtvHandles[backBufferIndex], false, nullptr);  
