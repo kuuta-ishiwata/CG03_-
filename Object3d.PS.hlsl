@@ -75,14 +75,20 @@ PixelShaderOutput main(VertexShaderOutput input)
     
     //拡散反射+鏡面反射
         output.color.rgb = diffuse + specular;
+        
     //アルファは今まで通り
         output.color.a = gMaterial.color.a * textureColor.a;
+        output.color.rgb = gMaterial.color.rgb * textureColor.rgb;
+        
+        
         
     }
     else
     {
         
         output.color = gMaterial.color * textureColor;
+        //output.color = gMaterial.color * textureColor;
+        
         
     }
     
