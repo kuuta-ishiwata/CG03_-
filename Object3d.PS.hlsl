@@ -57,6 +57,10 @@ PixelShaderOutput main(VertexShaderOutput input)
         //float cos = saturate(dot(normalize(input.nomal), -gDirectionalLight.direction));
         //output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
         
+       // float32_t halfVector = normalize(-gDirectionalLight.direction + toEye);
+       // float NDotH = dot(normalize(input.nomal), halfVector);
+       // float specularpow = pow(saturate(NDotH), gMaterial.shininess);
+        
         float32_t3 reflectLight = reflect(gDirectionalLight.direction, normalize(input.nomal));
     
         float32_t3 toEye = normalize(gCamera.worldPosition - input.worldPosition);
@@ -78,7 +82,7 @@ PixelShaderOutput main(VertexShaderOutput input)
         
     //アルファは今まで通り
         output.color.a = gMaterial.color.a * textureColor.a;
-        output.color.rgb = gMaterial.color.rgb * textureColor.rgb;
+        //output.color.rgb = gMaterial.color.rgb * textureColor.rgb;
         
         
         
