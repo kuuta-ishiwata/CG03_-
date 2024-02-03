@@ -1464,7 +1464,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	directionalLightData->color = { 1.0f,1.0f,1.0f,1.0f };
 	//directionalLightData->color = { 1.0f,1.0f,1.0f,1.0f };
 	directionalLightData->direction = { 0.0f,-1.0f,0.0f };
-	directionalLightData->intensity = 20.0f;
+	directionalLightData->intensity = 1.0f;
 
 
 	//カメラ用のリソース

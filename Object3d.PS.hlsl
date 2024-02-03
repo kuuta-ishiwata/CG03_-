@@ -66,7 +66,7 @@ PixelShaderOutput main(VertexShaderOutput input)
         float32_t3 toEye = normalize(gCamera.worldPosition - input.worldPosition);
     
         float NdotL = dot(normalize(input.nomal), normalize(-gDirectionalLight.direction));
-        float cos = pow(NdotL * 0.5f * 0.5f, 2.0f);
+        float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
    
         float RdotE = dot(reflectLight, toEye);
         float specularPow = pow(saturate(RdotE), gMaterial.shininess); //反射強度
